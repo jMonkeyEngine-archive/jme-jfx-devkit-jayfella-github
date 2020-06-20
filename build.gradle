@@ -1,0 +1,106 @@
+plugins {
+    id 'java'
+    id 'application'
+    id "maven-publish"
+    id 'org.openjfx.javafxplugin' version '0.0.8'
+}
+
+// maven-publish
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
+
+// javafx
+javafx {
+    version = '14.0.1'
+    modules = [
+            'javafx.base',
+            'javafx.controls',
+            'javafx.fxml',
+            'javafx.graphics',
+            'javafx.swing'
+    ]
+}
+
+group 'com.jayfella'
+version '0.0.1'
+mainClassName = "com.jayfella.devkit.Main"
+
+repositories {
+    mavenLocal()
+    jcenter()
+
+    maven { url  "https://dl.bintray.com/simsilica/Sim-tools" }
+}
+
+project.ext {
+
+    version_jme = "3.3.2-stable"
+
+    version_lemur = "1.13.0"
+    version_lemur_proto = "1.11.0"
+    version_lemur_props = "1.1.0"
+    version_groovy_all = "3.0.3"
+
+    version_jackson = "2.10.3"
+
+    version_log4j = "1.2.17"
+    version_slf4j = "1.7.25"
+
+}
+
+dependencies {
+
+    // jme-embedded
+    implementation "com.jayfella:jfx-11-jme-embedded:1.0.1"
+
+    // jmonkey
+    implementation "org.jmonkeyengine:jme3-core:$version_jme"
+    implementation "org.jmonkeyengine:jme3-desktop:$version_jme"
+    implementation "org.jmonkeyengine:jme3-lwjgl3:$version_jme"
+    implementation "org.jmonkeyengine:jme3-plugins:$version_jme"
+    implementation "org.jmonkeyengine:jme3-blender:$version_jme"
+    implementation "org.jmonkeyengine:jme3-jogg:$version_jme"
+    // implementation "org.jmonkeyengine:jme3-terrain:$version_jme"
+
+    // lemur
+    implementation "com.simsilica:lemur:$version_lemur"
+    implementation "com.simsilica:lemur-proto:$version_lemur_proto"
+    implementation "com.simsilica:lemur-props:$version_lemur_props"
+    implementation "org.codehaus.groovy:groovy-all:$version_groovy_all"
+
+    // logging
+    implementation "log4j:log4j:$version_log4j"
+    implementation "org.slf4j:slf4j-api:$version_slf4j"
+    implementation "org.slf4j:jul-to-slf4j:$version_slf4j"
+    implementation "org.slf4j:slf4j-log4j12:$version_slf4j"
+
+    // fontawesome
+    implementation 'de.jensd:fontawesomefx-emojione:3.1.1-9.1.2'
+    implementation 'de.jensd:fontawesomefx-fontawesome:4.7.0-9.1.2'
+    implementation 'de.jensd:fontawesomefx-icons525:4.2.0-9.1.2'
+    implementation 'de.jensd:fontawesomefx-materialdesignfont:2.0.26-9.1.2'
+    implementation 'de.jensd:fontawesomefx-materialicons:2.2.0-9.1.2'
+    implementation 'de.jensd:fontawesomefx-octicons:4.3.0-9.1.2'
+    implementation 'de.jensd:fontawesomefx-weathericons:2.0.10-9.1.2'
+    implementation 'de.jensd:fontawesomefx-controls:9.1.2'
+    implementation 'org.controlsfx:controlsfx:8.40.11'
+
+    // jmec - model importer (GLTF)
+    implementation 'com.simsilica:jmec:1.1.1'
+
+    // jackson - JSON
+    implementation "com.fasterxml.jackson.core:jackson-core:$version_jackson"
+    implementation "com.fasterxml.jackson.core:jackson-annotations:$version_jackson"
+    implementation "com.fasterxml.jackson.core:jackson-databind:$version_jackson"
+
+}
