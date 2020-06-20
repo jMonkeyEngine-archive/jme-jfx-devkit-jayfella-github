@@ -36,9 +36,7 @@ version '0.0.1'
 mainClassName = "com.jayfella.devkit.Main"
 
 repositories {
-    mavenLocal()
     jcenter()
-
     maven { url  "https://dl.bintray.com/simsilica/Sim-tools" }
 }
 
