@@ -82,7 +82,6 @@ public class MainPageController implements Initializable {
     }
 
     public void start() {
-        mainStage.setTitle("JmonkeyEngine SDK");
         createView();
         applyConfiguration();
         addSceneControls();
