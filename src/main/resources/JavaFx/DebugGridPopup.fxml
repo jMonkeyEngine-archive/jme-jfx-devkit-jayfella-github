@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane hgap="5.0" styleClass="sdkpopup" vgap="5.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jayfella.devkit.controller.DebugGridPopupController">
+     <columnConstraints>
+         <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" />
+         <ColumnConstraints hgrow="SOMETIMES" />
+     </columnConstraints>
+     <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+     </rowConstraints>
+     <children>
+         <Label text="Size (x, y)" GridPane.rowIndex="1" />
+         <Label text="Color" GridPane.rowIndex="3" />
+         <Label text="Line Spacing" GridPane.rowIndex="2" />
+         <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+             <children>
+                 <TextField maxWidth="100.0" minWidth="100.0" fx:id="xGridSizeTextField" />
+                 <TextField fx:id="yGridSizeTextField" maxWidth="100.0" minWidth="100.0" />
+             </children>
+         </HBox>
+         <TextField fx:id="gridLineSpacingTextField" maxWidth="100.0" minWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         <ColorPicker fx:id="gridColorPicker" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <Label text="Enabled" />
+      <CheckBox fx:id="debugGridEnabledCheckBox" mnemonicParsing="false" onAction="#onEnableDebugGridCheckBoxAction" GridPane.columnIndex="1" />
+     </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+   <stylesheets>
+      <URL value="@css/popup.css" />
+      <URL value="@css/style.css" />
+   </stylesheets>
+ </GridPane>
