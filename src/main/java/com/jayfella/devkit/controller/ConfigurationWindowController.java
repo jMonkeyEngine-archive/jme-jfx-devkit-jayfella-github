@@ -2,6 +2,8 @@ package com.jayfella.devkit.controller;
 
 import com.jayfella.devkit.config.DevKitConfig;
 import com.jayfella.devkit.controller.config.ConfigurationSection;
+import com.jayfella.devkit.service.JmeEngineService;
+import com.jayfella.devkit.service.ServiceManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +22,7 @@ public class ConfigurationWindowController implements Initializable {
 
     private static final String[] sections = {
             "CameraConfiguration",
-            "SceneConfiguration",
+            // "SceneConfiguration",
     };
 
     @FXML private ListView<ConfigurationSection> configAreasListView;
@@ -74,7 +76,15 @@ public class ConfigurationWindowController implements Initializable {
             section.applyToConfiguration();
         }
 
-        DevKitConfig.getInstance().save();
+        DevKitConfig devKitConfig = DevKitConfig.getInstance();
+        devKitConfig.save();
+
+        // try to apply any setting that we can.
+        JmeEngineService engineService = ServiceManager.getService(JmeEngineService.class);
+
+        engineService.applyCameraFrustumSizes();
+        engineService.getViewPort().setBackgroundColor(devKitConfig.getCameraConfig().getViewportColor());
+
     }
 
     @FXML
