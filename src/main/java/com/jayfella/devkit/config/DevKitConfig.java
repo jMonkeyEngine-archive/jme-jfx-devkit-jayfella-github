@@ -31,6 +31,7 @@ public class DevKitConfig {
             .registerModule(new SimpleModule().addSerializer(Vector3f .class, new Vector3fSerializer(Vector3f.class)))
             .registerModule(new SimpleModule().addSerializer(Quaternion.class, new QuaternionSerializer(Quaternion.class)));
 
+    private SdkConfig sdkConfig = new SdkConfig();
     private ProjectConfig projectConfig = new ProjectConfig();
     private CameraConfig cameraConfig = new CameraConfig();
     private SceneConfig sceneConfig = new SceneConfig();
@@ -80,6 +81,9 @@ public class DevKitConfig {
         return INSTANCE;
     }
 
+    public SdkConfig getSdkConfig() { return sdkConfig; }
+    protected void setSdkConfig(SdkConfig sdkConfig) { this.sdkConfig = sdkConfig; }
+
     public ProjectConfig getProjectConfig() { return projectConfig; }
     protected void setProjectConfig(ProjectConfig projectConfig) { this.projectConfig = projectConfig; }
 
@@ -95,11 +99,11 @@ public class DevKitConfig {
 
     public void save() {
 
-        log.info("Saving configuration: " + configFile);
+        log.finer("Saving configuration: " + configFile);
 
         try {
             objectMapper.writeValue(configFile, this);
-            log.info("Saved configuration: " + configFile);
+            log.finer("Saved configuration: " + configFile);
         } catch (IOException ex) {
             log.log(Level.SEVERE, "Unable to write file: " + configFile, ex);
         }
