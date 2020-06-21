@@ -1,26 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Tooltip?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import java.net.URL?>
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jayfella.devkit.controller.SceneControlsController">
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jayfella.devkit.controller.SceneControlsController">
    <children>
       <HBox>
          <children>
             <HBox styleClass="hbox-child">
                <children>
-                  <Button mnemonicParsing="false">
+                  <ToggleButton mnemonicParsing="false" onAction="#onDebugLightsToggleButtonAction">
                      <graphic>
-                        <FontAwesomeIconView glyphName="SUN_ALT" />
+                        <FontAwesomeIconView glyphName="SUN_ALT" styleClass="buttonLeft" />
                      </graphic>
                      <tooltip>
                         <Tooltip text="Toggle Debug Lights" />
                      </tooltip>
-                  </Button>
+                  </ToggleButton>
+                  <ToggleButton mnemonicParsing="false" onAction="#onDebugGridToggleButtonAction" styleClass="buttonRight">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="TH" styleClass="buttonLeft" />
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Grid Settings" />
+                     </tooltip>
+                  </ToggleButton>
 
                </children>
             </HBox>
