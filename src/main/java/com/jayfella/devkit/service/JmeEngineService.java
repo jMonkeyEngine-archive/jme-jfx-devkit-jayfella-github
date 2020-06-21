@@ -16,5 +16,6 @@ public abstract class JmeEngineService extends SimpleJfxApplication implements S
     // public abstract void setView2d();
     // public abstract void setView3d();
 
+    public abstract void applyCameraFrustumSizes();
 
 }

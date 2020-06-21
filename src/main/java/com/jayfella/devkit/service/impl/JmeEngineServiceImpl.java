@@ -1,12 +1,12 @@
 package com.jayfella.devkit.service.impl;
 
+import com.jayfella.devkit.config.CameraConfig;
 import com.jayfella.devkit.config.DevKitConfig;
 import com.jayfella.devkit.service.JmeEngineService;
 import com.jayfella.jfx.embedded.jme.JmeOffscreenSurfaceContext;
 import com.jme3.audio.AudioListenerState;
 import com.jme3.environment.EnvironmentCamera;
 import com.jme3.material.TechniqueDef;
-import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
 import com.jme3.post.FilterPostProcessor;
 import com.jme3.renderer.queue.RenderQueue;
@@ -49,11 +49,7 @@ public class JmeEngineServiceImpl extends JmeEngineService {
         DevKitConfig devKitConfig = DevKitConfig.getInstance();
         viewPort.setBackgroundColor(devKitConfig.getCameraConfig().getViewportColor());
 
-        viewPort.getCamera().setFrustumPerspective(
-                devKitConfig.getCameraConfig().getFieldOfView(),
-                (float) viewPort.getCamera().getWidth() / (float) viewPort.getCamera().getHeight(),
-                devKitConfig.getCameraConfig().getFrustumNear(),
-                devKitConfig.getCameraConfig().getFrustumFar());
+        applyCameraFrustumSizes();
 
         GuiGlobals.initialize(this);
         BaseStyles.loadGlassStyle();
@@ -70,13 +66,6 @@ public class JmeEngineServiceImpl extends JmeEngineService {
         // Configure the scene for PBR
         getRenderManager().setPreferredLightMode(TechniqueDef.LightMode.SinglePassAndImageBased);
         getRenderManager().setSinglePassLightBatchSize(10);
-
-        // change the viewport background from black to dark grey.
-        // this lets users see things that are black (no light in their scene).
-        // it saves a lot of questions about why they can't see anything.
-        // @todo let the user specify a color.
-        //viewPort.setBackgroundColor(new ColorRGBA(0.03f, 0.03f, 0.03f, 1.0f));
-        viewPort.setBackgroundColor(ColorRGBA.Black);
 
         inputManager.setCursorVisible(true);
 
@@ -122,6 +111,19 @@ public class JmeEngineServiceImpl extends JmeEngineService {
         if (this.fpp != null) {
             viewPort.addProcessor(this.fpp);
         }
+
+    }
+
+    @Override
+    public void applyCameraFrustumSizes() {
+
+        CameraConfig cameraConfig = DevKitConfig.getInstance().getCameraConfig();
+
+        viewPort.getCamera().setFrustumPerspective(
+                cameraConfig.getFieldOfView(),
+                (float) viewPort.getCamera().getWidth() / (float) viewPort.getCamera().getHeight(),
+                cameraConfig.getFrustumNear(),
+                cameraConfig.getFrustumFar());
 
     }
 
