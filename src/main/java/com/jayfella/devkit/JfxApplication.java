@@ -21,6 +21,7 @@ import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
 import org.lwjgl.system.Configuration;
 
+import java.io.File;
 import java.lang.management.ManagementFactory;
 import java.util.Arrays;
 
@@ -54,7 +55,8 @@ public class JfxApplication extends Application {
 
         Platform.setImplicitExit(false);
 
-        primaryStage.setTitle("JmonkeyEngine SDK");
+        String parentDirName = new File(System.getProperty("user.dir")).getName();
+        primaryStage.setTitle("JmonkeyEngine SDK:  " + parentDirName);
 
         // Splash Screen
         FXMLLoader splashLoader = new FXMLLoader(getClass().getResource("/JavaFx/SplashScreen.fxml"));
