@@ -5,6 +5,7 @@ import com.jme3.math.Vector3f;
 
 public class SceneConfig {
 
+    // grid
     private boolean showGrid = true;
     private Vector3f gridSize = new Vector3f(200, 200, 1.0f); // size x, y, lineWidth
     private ColorRGBA gridColor = new ColorRGBA(0.5f, 0.5f, 0.5f, 1.0f);
