@@ -4,7 +4,7 @@ import com.jme3.math.ColorRGBA;
 
 public class CameraConfig {
 
-    private ColorRGBA viewportColor = new ColorRGBA(0.0f, 0.0f, 0.0f, 1.0f);
+    private ColorRGBA viewportColor = new ColorRGBA(0.01f, 0.01f, 0.01f, 1.0f);
 
     private float fieldOfView = 45.0f;
     private float frustumNear = 0.1f;
