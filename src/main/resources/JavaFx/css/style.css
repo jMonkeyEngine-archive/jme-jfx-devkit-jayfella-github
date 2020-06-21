@@ -1,4 +1,4 @@
-.root {
+.root * {
     /* -fx-accent: #1a6ee4; */
     -fx-accent: #0e3e81;
     -fx-focus-color: -fx-accent;
