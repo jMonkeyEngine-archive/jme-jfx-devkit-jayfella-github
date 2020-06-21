@@ -3,6 +3,7 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import java.net.URL?>
 <VBox focusTraversable="true" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jayfella.devkit.controller.MainPageController">
    <children>
       <MenuBar>
@@ -58,4 +59,10 @@
          </children>
       </AnchorPane>
    </children>
+
+    <stylesheets>
+        <URL value="@css/scene-controls.css" />
+        <URL value="@css/style.css" />
+    </stylesheets>
+
 </VBox>
