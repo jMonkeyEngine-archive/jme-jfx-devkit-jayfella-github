@@ -1,5 +1,6 @@
 package com.jayfella.devkit;
 
+import com.jayfella.devkit.config.DevKitConfig;
 import com.jayfella.devkit.controller.MainPageController;
 import com.jayfella.devkit.controller.SplashScreenController;
 import com.jayfella.devkit.core.LogUtil;
@@ -69,8 +70,39 @@ public class JfxApplication extends Application {
         Parent root = primaryLoader.load();
         MainPageController mainPageController = primaryLoader.getController();
         primaryStage.initStyle(StageStyle.DECORATED);
-        primaryStage.setScene(new Scene(root, 1280, 720));
+
+        // set window size
+        primaryStage.setScene(new Scene(root,
+                DevKitConfig.getInstance().getSdkConfig().getWindowSize()[0],
+                DevKitConfig.getInstance().getSdkConfig().getWindowSize()[1]));
+
+        // set window position
+        primaryStage.setX(DevKitConfig.getInstance().getSdkConfig().getWindowLocation()[0]);
+        primaryStage.setY(DevKitConfig.getInstance().getSdkConfig().getWindowLocation()[1]);
+
         primaryStage.setOnHidden(event -> Platform.exit());
+
+        // window size
+        primaryStage.widthProperty().addListener((observable, oldValue, newValue) -> {
+            DevKitConfig.getInstance().getSdkConfig().getWindowSize()[0] = newValue.doubleValue();
+            DevKitConfig.getInstance().save();
+        });
+
+        primaryStage.heightProperty().addListener((observable, oldValue, newValue) -> {
+            DevKitConfig.getInstance().getSdkConfig().getWindowSize()[1] = newValue.doubleValue();
+            DevKitConfig.getInstance().save();
+        });
+
+        // window position
+        primaryStage.xProperty().addListener((observable, oldValue, newValue) -> {
+            DevKitConfig.getInstance().getSdkConfig().getWindowLocation()[0] = newValue.doubleValue();
+            DevKitConfig.getInstance().save();
+        });
+
+        primaryStage.yProperty().addListener((observable, oldValue, newValue) -> {
+            DevKitConfig.getInstance().getSdkConfig().getWindowLocation()[1] = newValue.doubleValue();
+            DevKitConfig.getInstance().save();
+        });
 
         mainPageController.setMainStage(primaryStage);
         splashController.setPrimaryController(mainPageController);
