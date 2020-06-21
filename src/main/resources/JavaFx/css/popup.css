@@ -1,0 +1,4 @@
+.sdkpopup {
+    -fx-border-color: derive(-fx-text-color, 10%);
+    -fx-background-color: derive(-fx-base, 25%);
+}
