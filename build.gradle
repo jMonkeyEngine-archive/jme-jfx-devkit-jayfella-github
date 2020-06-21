@@ -37,7 +37,6 @@ mainClassName = "com.jayfella.devkit.Main"
 
 repositories {
     jcenter()
-    maven { url  "https://dl.bintray.com/simsilica/Sim-tools" }
 }
 
 project.ext {
