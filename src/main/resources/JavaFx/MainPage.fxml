@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import java.net.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import java.net.URL?>
-<VBox focusTraversable="true" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jayfella.devkit.controller.MainPageController">
+
+<VBox focusTraversable="true" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jayfella.devkit.controller.MainPageController">
    <children>
       <MenuBar>
         <menus>
@@ -25,15 +26,9 @@
                   <MenuItem mnemonicParsing="false" onAction="#onConfigurationMenuItemAction" text="Configuration..." />
             </items>
           </Menu>
-            <Menu mnemonicParsing="false" text="View">
-              <items>
-                  <CheckMenuItem fx:id="showGridCheckMenuItem" mnemonicParsing="false" onAction="#onShowGridCheckMenuItemAction" text="Show Grid" />
-              </items>
-            </Menu>
             <Menu mnemonicParsing="false" text="Debug">
                <items>
                   <CheckMenuItem fx:id="showStatisticsCheckMenuItem" mnemonicParsing="false" onAction="#onShowStatsCheckMenuItem" text="Show Statistics" />
-                  <CheckMenuItem mnemonicParsing="false" onAction="#onShowDebugLightCheckMenuItem" text="Show Debug Lights" />
                 <Menu mnemonicParsing="false" text="Help">
                   <items>
                     <MenuItem mnemonicParsing="false" text="About" />
@@ -43,21 +38,13 @@
             </Menu>
         </menus>
       </MenuBar>
-      <AnchorPane focusTraversable="true" VBox.vgrow="ALWAYS">
-         <children>
-            <SplitPane dividerPositions="0.7" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-              <items>
-                  <SplitPane dividerPositions="0.4" prefHeight="160.0" prefWidth="200.0">
-                    <items>
-                      <AnchorPane fx:id="anchorPaneLeft" focusTraversable="true" />
-                      <AnchorPane fx:id="anchorPaneMiddle" focusTraversable="true" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
-                    </items>
-                  </SplitPane>
-                <AnchorPane fx:id="anchorPaneRight" focusTraversable="true" minHeight="0.0" minWidth="0.0" prefHeight="449.0" prefWidth="234.0" />
-              </items>
-            </SplitPane>
-         </children>
-      </AnchorPane>
+      <SplitPane fx:id="splitPane" dividerPositions="0.3, 0.75" prefHeight="160.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+        <items>
+          <AnchorPane fx:id="anchorPaneLeft" focusTraversable="true" />
+          <AnchorPane fx:id="anchorPaneMiddle" focusTraversable="true" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+          <AnchorPane fx:id="anchorPaneRight" focusTraversable="true" minHeight="0.0" minWidth="0.0" prefHeight="449.0" prefWidth="234.0" />
+        </items>
+      </SplitPane>
    </children>
 
     <stylesheets>
