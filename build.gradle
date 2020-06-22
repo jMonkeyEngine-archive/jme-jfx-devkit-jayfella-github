@@ -2,7 +2,7 @@ plugins {
     id 'java'
     id 'application'
     id "maven-publish"
-    id 'org.openjfx.javafxplugin' version '0.0.8'
+//    id 'org.openjfx.javafxplugin' version '0.0.8'
 }
 
 // maven-publish
@@ -20,23 +20,26 @@ java {
 }
 
 // javafx
-javafx {
-    version = '14.0.1'
-    modules = [
-            'javafx.base',
-            'javafx.controls',
-            'javafx.fxml',
-            'javafx.graphics',
-            'javafx.swing'
-    ]
-}
+//javafx {
+//    version = '14.0.1'
+//    modules = [
+//            'javafx.base',
+//            'javafx.controls',
+//            'javafx.fxml',
+//            'javafx.graphics',
+//            'javafx.swing'
+//    ]
+//}
 
 group 'com.jayfella'
-version '0.0.1'
+version '0.0.2'
 mainClassName = "com.jayfella.devkit.Main"
 
 repositories {
+    mavenLocal()
     jcenter()
+
+    maven { url  "https://dl.bintray.com/dua3/public" }
 }
 
 project.ext {
@@ -58,7 +61,7 @@ project.ext {
 dependencies {
 
     // jme-embedded
-    implementation "com.jayfella:jfx-11-jme-embedded:1.0.1"
+    implementation "com.jayfella:jfx-11-jme-embedded:1.0.2"
 
     // jmonkey
     implementation "org.jmonkeyengine:jme3-core:$version_jme"
@@ -82,15 +85,16 @@ dependencies {
     implementation "org.slf4j:slf4j-log4j12:$version_slf4j"
 
     // fontawesome
-    implementation 'de.jensd:fontawesomefx-emojione:3.1.1-9.1.2'
-    implementation 'de.jensd:fontawesomefx-fontawesome:4.7.0-9.1.2'
-    implementation 'de.jensd:fontawesomefx-icons525:4.2.0-9.1.2'
-    implementation 'de.jensd:fontawesomefx-materialdesignfont:2.0.26-9.1.2'
-    implementation 'de.jensd:fontawesomefx-materialicons:2.2.0-9.1.2'
-    implementation 'de.jensd:fontawesomefx-octicons:4.3.0-9.1.2'
-    implementation 'de.jensd:fontawesomefx-weathericons:2.0.10-9.1.2'
-    implementation 'de.jensd:fontawesomefx-controls:9.1.2'
-    implementation 'org.controlsfx:controlsfx:8.40.11'
+//    implementation 'de.jensd:fontawesomefx-emojione:3.1.1-9.1.2-jdk8'
+    implementation 'de.jensd:fontawesomefx-fontawesome:4.7.0-9.1.2-jdk8'
+//    implementation 'de.jensd:fontawesomefx-icons525:4.2.0-9.1.2-jdk8'
+//    implementation 'de.jensd:fontawesomefx-materialdesignfont:2.0.26-9.1.2-jdk8'
+//    implementation 'de.jensd:fontawesomefx-materialicons:2.2.0-9.1.2-jdk8'
+//    implementation 'de.jensd:fontawesomefx-octicons:4.3.0-9.1.2-jdk8'
+//    implementation 'de.jensd:fontawesomefx-weathericons:2.0.10-9.1.2-jdk8'
+//    implementation 'de.jensd:fontawesomefx-controls:9.1.2'
+//    implementation 'org.controlsfx:controlsfx:8.40.11'
+    implementation 'de.jensd:fontawesomefx-commons:9.1.2-jdk8'
 
     // jmec - model importer (GLTF)
     implementation 'com.simsilica:jmec:1.1.1'
